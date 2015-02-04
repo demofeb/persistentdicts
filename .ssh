@@ -1,0 +1,15 @@
+Host github.com *.github.com
+  AddressFamily inet
+
+#Host chmd.fr
+#  AddressFamily inet6
+
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/tmp/%r@%h:%p
+  ServerAliveInterval 60
+  ControlPersist 600
+
+Host ssl.chmd.fr
+  AddressFamily inet
+  Proxycommand socat - OPENSSL:chmd.fr:443,verify=0
